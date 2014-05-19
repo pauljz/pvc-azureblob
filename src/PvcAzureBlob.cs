@@ -2,8 +2,10 @@
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using PvcCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace PvcPlugins
 {
@@ -49,11 +51,12 @@ namespace PvcPlugins
         {
             CloudBlobContainer container = this.blobClient.GetContainerReference(this.containerName);
 
-            foreach (var inputStream in inputStreams)
+            Parallel.ForEach<PvcStream>(inputStreams, (inputStream) =>
             {
                 CloudBlockBlob blockBlob = container.GetBlockBlobReference(inputStream.StreamName);
+                Console.WriteLine(string.Format("Uploading {0}", inputStream.StreamName));
                 blockBlob.UploadFromStream(inputStream);
-            }
+            });
 
             return inputStreams;
         }
