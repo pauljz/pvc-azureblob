@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Pvc.AzureBlob")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("PVC plugin for Azure Blob Storage")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Paul Zumbrun")]
 [assembly: AssemblyProduct("Pvc.AzureBlob")]
